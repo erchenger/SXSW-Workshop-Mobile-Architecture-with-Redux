@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.elliott.sxswreduxworkshopandroid"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions "exercise"
+
+    productFlavors {
+        _01 {
+            dimension "exercise"
+            applicationIdSuffix ".exerciseone"
+            versionNameSuffix "01"
+        }
+
+        _02 {
+            dimension "exercise"
+            applicationIdSuffix ".exercisetwo"
+            versionNameSuffix "02"
+        }
+        _03 {
+            dimension "exercise"
+            applicationIdSuffix ".exercisethree"
+            versionNameSuffix "03"
+        }
+        _04 {
+            dimension "exercise"
+            applicationIdSuffix ".exercisefour"
+            versionNameSuffix "04"
+        }
+        _05 {
+            dimension "exercise"
+            applicationIdSuffix ".exercisefive"
+            versionNameSuffix "05"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    //Android Support
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+    //Android Architecture
+    implementation 'android.arch.lifecycle:viewmodel:1.1.1'
+    implementation 'android.arch.lifecycle:livedata-core:1.1.1'
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
+
+    //Testing
+    testImplementation 'junit:junit:4.12'
+
+    //Redux
+        implementation 'org.reduxjava:reduxjava:1.0.0-SNAPSHOT'
+
+    //Networking
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+
+    //Image Rendering
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //Testing
+    implementation 'org.mockito:mockito-core:2.24.5'
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
+
+
+
+}
