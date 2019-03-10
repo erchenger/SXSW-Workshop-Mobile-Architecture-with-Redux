@@ -1,0 +1,6 @@
+framework module Pods_NASARedux {
+  umbrella header "Pods-NASARedux-umbrella.h"
+
+  export *
+  module * { export * }
+}

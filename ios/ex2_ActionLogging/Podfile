@@ -1,0 +1,15 @@
+platform :ios, '12.0'
+
+target 'NASARedux' do
+  use_frameworks!
+  inhibit_all_warnings!
+  
+  pod 'Kingfisher', '5.1.1'
+  pod 'Result', '4.1.0'
+  pod 'ReSwift', '4.0.1'
+  pod 'SwiftyJSON', '4.2.0'
+  
+  target 'NASAReduxTests' do
+      inherit! :search_paths
+  end
+end

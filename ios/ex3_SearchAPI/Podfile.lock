@@ -1,0 +1,28 @@
+PODS:
+  - Kingfisher (5.1.1)
+  - Result (4.1.0)
+  - ReSwift (4.0.1)
+  - SwiftyJSON (4.2.0)
+
+DEPENDENCIES:
+  - Kingfisher (= 5.1.1)
+  - Result (= 4.1.0)
+  - ReSwift (= 4.0.1)
+  - SwiftyJSON (= 4.2.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Kingfisher
+    - Result
+    - ReSwift
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Kingfisher: 2558186963e5be42d98c5b110ccb3130148b77e4
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  ReSwift: f4012c613e13da7398827fe5aebdb938eaed40a3
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+
+PODFILE CHECKSUM: 7fcbf62ddae04ac1073193a860a99c3540996cf3
+
+COCOAPODS: 1.5.3
