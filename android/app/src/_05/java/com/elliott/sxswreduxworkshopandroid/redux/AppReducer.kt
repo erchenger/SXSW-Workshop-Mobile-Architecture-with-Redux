@@ -1,11 +1,12 @@
 package com.elliott.sxswreduxworkshopandroid.redux
 
-import redux.api.Action
-import redux.api.Reducer
+import org.rekotlin.Action
+import org.rekotlin.Reducer
 
 class AppReducer : Reducer<AppState> {
 
-    override fun reduce(state: AppState, action: Action?): AppState {
+    override fun invoke(action: Action, state: AppState?): AppState {
+        var state = state ?: AppState()
         return when (action) {
             is ListStateReducer -> {
                 val listState = action.reduce(state.listState)

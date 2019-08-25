@@ -4,9 +4,7 @@ import android.app.Application
 import com.elliott.sxswreduxworkshopandroid.network.NasaImageApi
 import com.elliott.sxswreduxworkshopandroid.redux.AppReducer
 import com.elliott.sxswreduxworkshopandroid.redux.AppState
-import redux.Redux
-import redux.api.Store
-import redux.api.enhancer.Middleware
+import org.rekotlin.Store
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -21,6 +19,6 @@ open class App : Application() {
                 .baseUrl("https://images-api.nasa.gov/")
                 .build()
         val nasaImageApi = retrofit.create(NasaImageApi::class.java)
-        store = Redux.createStore(AppReducer(), AppState())
+        store = Store(AppReducer(), AppState())
     }
 }

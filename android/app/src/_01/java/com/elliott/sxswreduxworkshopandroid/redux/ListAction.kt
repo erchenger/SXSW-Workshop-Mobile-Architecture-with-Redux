@@ -1,7 +1,6 @@
 package com.elliott.sxswreduxworkshopandroid.redux
 
-import redux.api.Action
-import java.io.Serializable
+import org.rekotlin.Action
 
 abstract class ListAction : Action
 

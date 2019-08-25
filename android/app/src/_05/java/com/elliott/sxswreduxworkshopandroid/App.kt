@@ -6,8 +6,7 @@ import com.elliott.sxswreduxworkshopandroid.redux.AppReducer
 import com.elliott.sxswreduxworkshopandroid.redux.AppState
 import com.elliott.sxswreduxworkshopandroid.redux.middleware.AsyncMiddleware
 import com.elliott.sxswreduxworkshopandroid.redux.middleware.LoggingMiddleware
-import redux.Redux
-import redux.api.Store
+import org.rekotlin.Store
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -18,11 +17,14 @@ open class App : Application() {
     override fun onCreate() {
         super.onCreate()
         val retrofit = Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("https://images-api.nasa.gov/")
-                .build()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("https://images-api.nasa.gov/")
+            .build()
         val nasaImageApi = retrofit.create(NasaImageApi::class.java)
-        val enhancers = Redux.applyMiddleware(LoggingMiddleware(), AsyncMiddleware(nasaImageApi))
-        store = Redux.createStore(AppReducer(), AppState(), enhancers)
+        store = Store(
+            AppReducer(),
+            AppState(),
+            listOf(LoggingMiddleware, AsyncMiddleware(nasaImageApi).middleware)
+        )
     }
 }

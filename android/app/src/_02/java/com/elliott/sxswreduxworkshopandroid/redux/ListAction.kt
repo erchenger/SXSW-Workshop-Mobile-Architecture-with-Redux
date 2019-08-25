@@ -1,7 +1,6 @@
 package com.elliott.sxswreduxworkshopandroid.redux
 
-import redux.api.Action
-import java.io.Serializable
+import org.rekotlin.Action
 
 abstract class ListAction : Action
 
@@ -10,9 +9,6 @@ interface ListStateReducer {
 }
 
 data class SetSearchText(val searchTerm: String) : ListAction(), ListStateReducer {
-    override fun getType(): Serializable {
-        return -1
-    }
 
     override fun reduce(state: ListState): ListState {
         return state.copy(searchTerm = searchTerm)

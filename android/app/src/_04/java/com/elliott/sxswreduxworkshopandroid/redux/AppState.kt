@@ -1,11 +1,12 @@
 package com.elliott.sxswreduxworkshopandroid.redux
 
 import com.elliott.sxswreduxworkshopandroid.network.model.ImageCollection
+import org.rekotlin.StateType
 
 data class AppState(
         val listState: ListState = ListState(),
         val detailAppState: DetailAppState = DetailAppState()
-)
+): StateType
 
 data class ListState(
         val searchTerm: String = "",

@@ -5,7 +5,7 @@ import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MutableLiveData
 import com.elliott.sxswreduxworkshopandroid.App
 import com.elliott.sxswreduxworkshopandroid.redux.AppState
-import redux.api.Store
+import org.rekotlin.Store
 
 class DetailViewModel(application: Application) : AndroidViewModel(application) {
     val uiModelLiveData = MutableLiveData<DetailUiModel>()
