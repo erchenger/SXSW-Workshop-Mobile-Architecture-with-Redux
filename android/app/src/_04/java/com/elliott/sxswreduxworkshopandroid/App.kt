@@ -7,12 +7,13 @@ import com.elliott.sxswreduxworkshopandroid.redux.AppState
 import com.elliott.sxswreduxworkshopandroid.redux.middleware.AsyncMiddleware
 import com.elliott.sxswreduxworkshopandroid.redux.middleware.LoggingMiddleware
 import org.rekotlin.Store
+import org.rekotlin.StoreType
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 open class App : Application() {
 
-    open lateinit var store: Store<AppState>
+    open lateinit var store: StoreType<AppState>
 
     override fun onCreate() {
         super.onCreate()

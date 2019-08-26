@@ -6,7 +6,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.rules.ErrorCollector
 import org.mockito.Mockito.*
-import redux.api.Store
+import org.rekotlin.Store
 
 class ListViewModelUnitTests {
 

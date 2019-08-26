@@ -4,22 +4,18 @@ import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MutableLiveData
 import com.elliott.sxswreduxworkshopandroid.App
-import com.elliott.sxswreduxworkshopandroid.network.model.ImageCollectionItem
 import com.elliott.sxswreduxworkshopandroid.redux.AppState
 import com.elliott.sxswreduxworkshopandroid.redux.SetSearchText
-import redux.api.Store
+import org.rekotlin.StoreSubscriber
+import org.rekotlin.StoreType
 
-class ListViewModel(application: Application) : AndroidViewModel(application) {
+class ListViewModel(application: Application) : AndroidViewModel(application), StoreSubscriber<AppState> {
 
     val uiModelLiveData = MutableLiveData<MainUiModel>()
-    var subscription: Store.Subscription? = null
-    private val store: Store<AppState> = (application as App).store
+    private val store: StoreType<AppState> = (application as App).store
 
     init {
-        subscription = store.subscribe {
-            val state = store.state
-            uiModelLiveData.value = MainUiModel.fromListState(state.listState)
-        }
+        store.subscribe(this)
     }
 
     fun onSearch(searchTerm: String) {
@@ -27,7 +23,12 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
         store.dispatch(searchAction)
     }
 
+    override fun newState(state: AppState) {
+        val state = store.state
+        uiModelLiveData.value = MainUiModel.fromListState(state.listState)
+    }
+
     override fun onCleared() {
-        subscription?.unsubscribe()
+        store.unsubscribe(this)
     }
 }

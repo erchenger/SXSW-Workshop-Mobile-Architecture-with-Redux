@@ -17,8 +17,8 @@ import org.junit.rules.ErrorCollector
 import org.mockito.ArgumentMatchers
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
-import redux.Redux
-import redux.api.Store
+import org.rekotlin.Middleware
+import org.rekotlin.Store
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,15 +28,15 @@ class ListActionUnitTests {
     @get:Rule
     val collector = ErrorCollector()
 
-    private lateinit var enhancers: Store.Enhancer<AppState>
+    private lateinit var enhancers: List<Middleware<AppState>>
     private lateinit var store: Store<AppState>
     private lateinit var nasaImageApi: NasaImageApi
 
     @Before
     fun setUp() {
         nasaImageApi = mock(NasaImageApi::class.java)
-        enhancers = Redux.applyMiddleware(AsyncMiddleware(nasaImageApi))
-        store = Redux.createStore(AppReducer(), AppState(), enhancers)
+        enhancers = listOf(AsyncMiddleware(nasaImageApi).middleware)
+        store = Store(AppReducer(), AppState(), enhancers)
     }
 
     @Test

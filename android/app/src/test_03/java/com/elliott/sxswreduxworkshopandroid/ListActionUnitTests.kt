@@ -7,22 +7,20 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.rules.ErrorCollector
 import org.mockito.Mockito.mock
-import redux.Redux
-import redux.api.Store
+import org.rekotlin.Store
 
 class ListActionUnitTests{
 
     @get:Rule
     val collector = ErrorCollector()
 
-    private lateinit var enhancers: Store.Enhancer<AppState>
     private lateinit var store: Store<AppState>
     private lateinit var nasaImageApi: NasaImageApi
 
     @Before
     fun setUp() {
         nasaImageApi = mock(NasaImageApi::class.java)
-        store = Redux.createStore(AppReducer(), AppState(), enhancers)
+        store = Store(AppReducer(), AppState())
     }
 
 

@@ -2,6 +2,7 @@ package com.elliott.sxswreduxworkshopandroid
 
 import com.elliott.sxswreduxworkshopandroid.redux.*
 import com.elliott.sxswreduxworkshopandroid.ui.search.ListViewModel
+import com.nhaarman.mockitokotlin2.capture
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
@@ -9,7 +10,8 @@ import org.junit.Test
 import org.junit.rules.ErrorCollector
 import org.mockito.ArgumentCaptor
 import org.mockito.Mockito.*
-import redux.api.Store
+import org.mockito.MockitoAnnotations
+import org.rekotlin.StoreType
 
 class ListViewModelUnitTests {
 
@@ -18,10 +20,11 @@ class ListViewModelUnitTests {
 
     private lateinit var listViewModel: ListViewModel
     private lateinit var mockApplication: App
-    private lateinit var store: Store<AppState>
+    private lateinit var store: StoreType<AppState>
 
     @Before
     fun setUp() {
+        MockitoAnnotations.initMocks(this);
         store = mockGeneric()
         mockApplication = mock(App::class.java)
         `when`(mockApplication.store).thenReturn(store)
@@ -38,7 +41,7 @@ class ListViewModelUnitTests {
         listViewModel.onSearch(searchTerm)
 
         //Assert
-        verify(store).dispatch(argumentCaptor.capture())
+        verify(store).dispatch(capture<SetSearchText>(argumentCaptor))
         assertEquals(searchTerm, argumentCaptor.value.searchTerm)
     }
 

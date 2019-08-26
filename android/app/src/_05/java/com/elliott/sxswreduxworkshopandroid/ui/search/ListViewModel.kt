@@ -11,11 +11,12 @@ import com.elliott.sxswreduxworkshopandroid.redux.ImageSelectionAction
 import com.elliott.sxswreduxworkshopandroid.redux.SetSearchText
 import org.rekotlin.Store
 import org.rekotlin.StoreSubscriber
+import org.rekotlin.StoreType
 
 class ListViewModel(application: Application) : AndroidViewModel(application), StoreSubscriber<AppState> {
 
     val uiModelLiveData = MutableLiveData<MainUiModel>()
-    private val store: Store<AppState> = (application as App).store
+    private val store: StoreType<AppState> = (application as App).store
     var lastList: List<ImageCollectionItem>? = null
 
     init {

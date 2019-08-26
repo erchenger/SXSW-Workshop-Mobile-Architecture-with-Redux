@@ -6,8 +6,7 @@ import com.elliott.sxswreduxworkshopandroid.redux.SetSearchText
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import redux.Redux
-import redux.api.Store
+import org.rekotlin.Store
 
 class SetSearchTextIntegrationTests {
 
@@ -15,7 +14,7 @@ class SetSearchTextIntegrationTests {
 
     @Before
     fun setUp() {
-        store = Redux.createStore(AppReducer(), AppState())
+        store = Store(AppReducer(), AppState())
     }
 
     @Test
